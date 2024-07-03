@@ -8,17 +8,22 @@
     <title>To do list</title>
 </head>
 <body>
+    <!-- creo l'app -->
     <div id="app" class="container">
         <h1>COSE DA FARE</h1>
+        <!-- aggiungere un'attività -->
         <div>
-            <input type="text">
-            <button @click>Aggiungi un'attività</button>
+            <input type="text" v-model="newActiv" @keyup.enter="aggiungi">
+            <button @click="aggiungi">Aggiungi</button>
         </div>
-
+        <!-- barrare un'attività -->
         <ul>
-            <li ></li>
-            <span></span>
-            <button @click></button>
+            <li v-for="(activities, index) in activities" :key="index" @click="fatto(index)">
+                <span v-if="activities.done">{{ activities.text }}</span>
+                <span v-else>{{ activities.text }}</span>
+                <button @click="rimuovi(index)">X</button>
+            </li>
+            
         </ul>
 
     </div>

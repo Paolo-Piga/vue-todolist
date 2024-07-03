@@ -11,8 +11,14 @@ const app = Vue.createApp({
     },
     methods: {
         aggiungi() {
-            this.activities.push({ text: this.newActiv, done: flase });
+            this.activities.push({ text: this.newActiv, done: false });
             this.newActiv = ``;
+        },
+        rimuovi(index) {
+            this.activities.splice(index, 1)
+        },
+        fatto(index) {
+            this.activities[index].done = !this.activities[index].done
         }
     }
-})
+}).mount(`#app`);
